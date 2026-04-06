@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nilesh Kumar Singh | Marketing & Data Analyst</title>
+<style>
+  :root {
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --teal-mid: #1D9E75;
+    --dark: #1A1A1A;
+    --gray: #555555;
+    --gray-light: #F7F7F5;
+    --border: #E5E5E0;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--dark); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; background: var(--white); border-bottom: 1px solid var(--border); z-index: 100; padding: 0 5%; }
+  .nav-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .nav-logo { font-weight: 700; font-size: 16px; color: var(--dark); text-decoration: none; }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* SECTIONS */
+  section { padding: 64px 5%; }
+  .inner { max-width: 960px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; }
+  .section-title { font-size: 28px; font-weight: 700; color: var(--dark); margin-bottom: 32px; }
+
+  /* HERO */
+  #hero { background: var(--gray-light); padding: 80px 5%; }
+  .hero-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+  .hero-badge { display: inline-block; background: var(--teal-light); color: var(--teal); font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .hero-name { font-size: 42px; font-weight: 800; color: var(--dark); line-height: 1.15; margin-bottom: 10px; }
+  .hero-name span { color: var(--teal); }
+  .hero-role { font-size: 18px; color: var(--gray); margin-bottom: 20px; }
+  .hero-bio { font-size: 15px; color: var(--gray); max-width: 520px; line-height: 1.7; margin-bottom: 28px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal); color: var(--white); padding: 11px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; }
+  .btn-outline { border: 1.5px solid var(--teal); color: var(--teal); padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; }
+  .hero-avatar { width: 160px; height: 160px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 800; color: white; flex-shrink: 0; }
+  .hero-contact { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+  .hero-contact a { font-size: 13px; color: var(--gray); text-decoration: none; display: flex; align-items: center; gap: 5px; }
+  .hero-contact a:hover { color: var(--teal); }
+
+  /* STATS */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 0; }
+  .stat-card { background: var(--teal-light); border-radius: 12px; padding: 20px; text-align: center; }
+  .stat-num { font-size: 30px; font-weight: 800; color: var(--teal); }
+  .stat-label { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+  /* SKILLS */
+  #skills { background: var(--white); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .skill-card { background: var(--gray-light); border-radius: 12px; padding: 20px 22px; }
+  .skill-card-title { font-size: 13px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag { font-size: 12px; background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; color: var(--dark); }
+
+  /* PROJECTS */
+  #projects { background: var(--gray-light); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .project-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+  .project-chart { height: 180px; background: var(--gray-light); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .project-body { padding: 20px; }
+  .project-year { font-size: 11px; font-weight: 600; color: var(--teal); letter-spacing: .8px; margin-bottom: 6px; }
+  .project-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .project-desc { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tool-tag { font-size: 11px; background: var(--teal-light); color: var(--teal); border-radius: 5px; padding: 3px 9px; font-weight: 600; }
+  .project-highlights { list-style: none; }
+  .project-highlights li { font-size: 12px; color: var(--gray); padding: 3px 0; padding-left: 14px; position: relative; }
+  .project-highlights li::before { content: "▸"; position: absolute; left: 0; color: var(--teal); font-size: 10px; top: 4px; }
+
+  /* EXPERIENCE */
+  #experience { background: var(--white); }
+  .exp-timeline { position: relative; padding-left: 24px; border-left: 2px solid var(--teal-light); }
+  .exp-item { margin-bottom: 32px; position: relative; }
+  .exp-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--teal); position: absolute; left: -30px; top: 5px; }
+  .exp-period { font-size: 11px; font-weight: 600; color: var(--teal); letter-spacing: .8px; margin-bottom: 4px; }
+  .exp-title { font-size: 16px; font-weight: 700; color: var(--dark); }
+  .exp-company { font-size: 13px; color: var(--gray); margin-bottom: 10px; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li { font-size: 13px; color: var(--gray); padding: 3px 0 3px 16px; position: relative; }
+  .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+  /* EDUCATION */
+  #education { background: var(--gray-light); }
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .edu-card { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+  .edu-degree { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .edu-inst { font-size: 13px; color: var(--gray); }
+  .edu-year { font-size: 12px; color: var(--teal); font-weight: 600; margin-top: 8px; }
+
+  /* CONTACT */
+  #contact { background: var(--teal); color: var(--white); text-align: center; padding: 60px 5%; }
+  #contact .section-label { color: rgba(255,255,255,.6); }
+  #contact .section-title { color: var(--white); margin-bottom: 12px; }
+  #contact p { color: rgba(255,255,255,.8); font-size: 15px; margin-bottom: 28px; }
+  .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .contact-link { background: rgba(255,255,255,.15); color: var(--white); padding: 10px 22px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid rgba(255,255,255,.25); }
+  .contact-link:hover { background: rgba(255,255,255,.25); }
+
+  /* CANVAS charts */
+  canvas { display: block; }
+
+  @media(max-width: 640px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-avatar { width: 100px; height: 100px; font-size: 34px; }
+    .hero-name { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Nilesh<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Open to Work · Bengaluru, India</div>
+      <h1 class="hero-name">Nilesh Kumar<br><span>Singh</span></h1>
+      <p class="hero-role">Marketing Analyst &amp; Data Analyst</p>
+      <p class="hero-bio">5+ years turning raw data into revenue decisions. I build dashboards, run A/B tests, optimise CAC, and find the insight that actually changes strategy — not just fills a report.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View My Projects</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-contact">
+        <a href="mailto:nileshsingh1911@icloud.com">✉ nileshsingh1911@icloud.com</a>
+        <a href="https://linkedin.com/in/nileshkasingh" target="_blank">🔗 LinkedIn</a>
+        <a href="tel:+918240114516">📞 +91 82401 14516</a>
+      </div>
+    </div>
+    <div class="hero-avatar">NKS</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="about" style="background:var(--white); padding: 40px 5%;">
+  <div class="inner">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-card"><div class="stat-num">30–50%</div><div class="stat-label">Revenue Growth Delivered</div></div>
+      <div class="stat-card"><div class="stat-num">22%</div><div class="stat-label">CAC Reduction</div></div>
+      <div class="stat-card"><div class="stat-num">180+</div><div class="stat-label">Leads/Month Generated</div></div>
+      <div class="stat-card"><div class="stat-num">300K+</div><div class="stat-label">Video Reach (Organic)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="inner">
+    <div class="section-label">What I Work With</div>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">Analytics & BI</div>
+        <div class="skill-tags">
+          <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Tableau</span>
+          <span class="tag">Google Analytics</span><span class="tag">Excel (Advanced)</span><span class="tag">Python (Pandas)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Performance Marketing</div>
+        <div class="skill-tags">
+          <span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">A/B Testing</span>
+          <span class="tag">CAC / ROAS</span><span class="tag">LTV Modelling</span><span class="tag">CRO</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Data Methods</div>
+        <div class="skill-tags">
+          <span class="tag">Funnel Analysis</span><span class="tag">Cohort Analysis</span>
+          <span class="tag">RFM Segmentation</span><span class="tag">Attribution Modelling</span><span class="tag">KPI Design</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Tools & Platforms</div>
+        <div class="skill-tags">
+          <span class="tag">CRM Platforms</span><span class="tag">Marketing Automation</span>
+          <span class="tag">MS Office</span><span class="tag">POS Systems</span><span class="tag">WhatsApp Business</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <!-- Project 1: Pizza -->
+      <div class="project-card">
+        <div class="project-chart" id="p1-chart"></div>
+        <div class="project-body">
+          <div class="project-year">2026 · Power BI · SQL</div>
+          <div class="project-title">Pizza Sales Analytics Dashboard</div>
+          <div class="project-desc">End-to-end analysis of 15,000+ orders — revenue trends, category mix, peak-hour patterns and size breakdown turned into an executive dashboard.</div>
+          <div class="project-tools">
+            <span class="tool-tag">SQL</span><span class="tool-tag">Power BI</span><span class="tool-tag">Python</span><span class="tool-tag">Excel</span>
+          </div>
+          <ul class="project-highlights">
+            <li>Fri–Sun drives 54% of weekly orders → combo deal strategy</li>
+            <li>Premium category +22% YoY, highest AOV at ₹485</li>
+            <li>Projected 12% revenue uplift from weekend targeting</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project 2: RFM -->
+      <div class="project-card">
+        <div class="project-chart" id="p2-chart"></div>
+        <div class="project-body">
+          <div class="project-year">2026 · Python · Tableau</div>
+          <div class="project-title">E-commerce Customer Segmentation (RFM)</div>
+          <div class="project-desc">Segmented 4,300+ customers from 500K transactions using RFM scoring. Identified high-value cohorts and designed targeted retention strategies.</div>
+          <div class="project-tools">
+            <span class="tool-tag">Python</span><span class="tool-tag">SQL</span><span class="tool-tag">Tableau</span><span class="tool-tag">Pandas</span>
+          </div>
+          <ul class="project-highlights">
+            <li>Top 18% of customers drive 62% of total revenue</li>
+            <li>820 At-Risk customers flagged for win-back campaign</li>
+            <li>Projected 15–20% recovery of lapsing revenue</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project 3: Singh & Sons -->
+      <div class="project-card">
+        <div class="project-chart" id="p3-chart"></div>
+        <div class="project-body">
+          <div class="project-year">2021–2026 · Power BI · Live</div>
+          <div class="project-title">Retail Growth Analytics — Singh & Sons</div>
+          <div class="project-desc">Built the complete marketing analytics function for a D2C grocery business — from zero dashboards to a full KPI suite driving 30–50% revenue growth.</div>
+          <div class="project-tools">
+            <span class="tool-tag">Power BI</span><span class="tool-tag">Meta Ads</span><span class="tool-tag">Google Ads</span><span class="tool-tag">CRM</span>
+          </div>
+          <ul class="project-highlights">
+            <li>CAC reduced by 22% through audience targeting</li>
+            <li>Repeat purchases improved by 25% via retention strategy</li>
+            <li>Operational efficiency up 40% with POS + WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="inner">
+    <div class="section-label">Work History</div>
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-timeline">
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-period">2021 – 2026</div>
+        <div class="exp-title">Marketing Analytics Lead</div>
+        <div class="exp-company">Singh & Sons Retail — D2C Grocery, Kolkata</div>
+        <ul class="exp-bullets">
+          <li>Grew revenue 30–50% via performance marketing and data-led acquisition</li>
+          <li>Built Power BI dashboards tracking 12+ KPIs; reduced CAC by 22%</li>
+          <li>Digitised operations with WhatsApp ordering + POS — 40% efficiency gain</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-period">2021 – 2023</div>
+        <div class="exp-title">Growth Marketing Consultant (Freelance)</div>
+        <div class="exp-company">Anchor of Hope — B2C Coaching, Kolkata</div>
+        <ul class="exp-bullets">
+          <li>Scaled YouTube 97 → 10K+ subscribers; 30K+ social audience with zero paid budget</li>
+          <li>Increased monthly leads from 5 to 15+ via funnel optimisation</li>
+          <li>Generated 300K+ video reach; improved engagement by 35%+</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-period">2019 – 2021</div>
+        <div class="exp-title">Marketing Analyst / Digital Marketing Executive</div>
+        <div class="exp-company">Broadway Infotech Pvt Ltd — Delhi</div>
+        <ul class="exp-bullets">
+          <li>Improved ROI/ROAS by 15–25%; reduced CAC by 20%</li>
+          <li>A/B testing drove CTR up 18%+; lead quality improved 30%</li>
+          <li>Campaigns generating 180+ qualified leads/month</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="inner">
+    <div class="section-label">Academic Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech — Computer Science Engineering</div>
+        <div class="edu-inst">BP Poddar Institute of Management & Technology</div>
+        <div class="edu-year">2018 · 7.22 DGPA</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Diploma — Computer Science & Technology</div>
+        <div class="edu-inst">Budge Budge Institute of Technology</div>
+        <div class="edu-year">2015 · 81.8%</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">AI Data Analyst Training</div>
+        <div class="edu-inst">Apptecknow Career, Bengaluru</div>
+        <div class="edu-year">2026 · Power BI, Dashboarding, Business Insights</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="section-title">Open to Analyst Roles in Bengaluru</h2>
+  <p>Marketing Analyst · Data Analyst · Growth Analytics · Business Intelligence</p>
+  <div class="contact-links">
+    <a href="mailto:nileshsingh1911@icloud.com" class="contact-link">✉ Email Me</a>
+    <a href="https://linkedin.com/in/nileshkasingh" class="contact-link" target="_blank">🔗 LinkedIn</a>
+    <a href="tel:+918240114516" class="contact-link">📞 Call</a>
+  </div>
+  <p style="margin-top:28px; font-size:12px; opacity:.5;">Nilesh Kumar Singh · Bengaluru, India · 2026</p>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// Pizza chart
+(function(){
+  var c = document.createElement('canvas');
+  document.getElementById('p1-chart').appendChild(c);
+  new Chart(c, {
+    type: 'bar',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+      datasets: [{
+        label: 'Revenue (₹L)',
+        data: [4.2,3.8,5.1,5.6,6.2,7.1,7.8,8.3,6.9,6.1,7.4,9.2],
+        backgroundColor: '#1D9E75',
+        borderRadius: 3,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#888', font: { size: 9 }, maxRotation: 0 }, grid: { display: false } },
+        y: { ticks: { color: '#888', font: { size: 9 }, callback: v => '₹'+v+'L' }, grid: { color: 'rgba(0,0,0,.06)' } }
+      }
+    }
+  });
+})();
+
+// RFM donut chart
+(function(){
+  var c = document.createElement('canvas');
+  document.getElementById('p2-chart').appendChild(c);
+  new Chart(c, {
+    type: 'doughnut',
+    data: {
+      labels: ['Champions','Loyal','At-Risk','New','Lost'],
+      datasets: [{
+        data: [18, 24, 19, 22, 17],
+        backgroundColor: ['#0F6E56','#1D9E75','#D85A30','#378ADD','#B4B2A9'],
+        borderWidth: 2,
+        borderColor: '#F7F7F5'
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      cutout: '58%',
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: { font: { size: 10 }, color: '#555', boxWidth: 10, padding: 8 }
+        }
+      }
+    }
+  });
+})();
+
+// Retail growth line chart
+(function(){
+  var c = document.createElement('canvas');
+  document.getElementById('p3-chart').appendChild(c);
+  new Chart(c, {
+    type: 'line',
+    data: {
+      labels: ['2021','2022','2023','2024','2025','2026'],
+      datasets: [{
+        label: 'Revenue Growth %',
+        data: [0, 12, 21, 34, 43, 50],
+        borderColor: '#0F6E56',
+        backgroundColor: 'rgba(15,110,86,0.1)',
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#0F6E56',
+        pointRadius: 4
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#888', font: { size: 10 } }, grid: { display: false } },
+        y: { ticks: { color: '#888', font: { size: 10 }, callback: v => v+'%' }, grid: { color: 'rgba(0,0,0,.06)' } }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
